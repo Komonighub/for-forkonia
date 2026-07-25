@@ -5,7 +5,7 @@ on:
 jobs:
   add_label:
     # Change the repository name after you've made sure the team name is correct for your fork!
-    if: ${{ (github.repository == 'funky-station/forky-station') && (github.event.review.state == 'APPROVED') }}
+    if: ${{ (github.repository == 'for-forkonia') && (github.event.review.state == 'APPROVED') }}
     permissions:
       contents: read
       pull-requests: write
@@ -13,4 +13,5 @@ jobs:
     steps:
     - uses: actions-ecosystem/action-add-labels@v1
       with:
+        github-token: "${{ secrets.BOT_TOKEN }}"
         labels: "Status: Approved"
