@@ -13,23 +13,28 @@ jobs:
         curl --silent --fail-with-body \
         -X DELETE \
         -H "Accept: application/vnd.github.v3+json" \
-        -H "Authorization: token ${{ github.token }}" https://api.github.com/repos/${{ github.repository }}/issues/${{github.event.number}}/labels/Status%3A%20Untriaged
+        -H "Authorization: token ${{ github.token }}" \
+        echo "https://api.github.com/repos/${{github.repository}}/issues/${{github.event.number}}/labels/Status%3A%20Untriaged"
     - if: "contains(github.event.pull_request.labels, 'Status: Merge Conflict')"
       run: |
         curl --silent --fail-with-body \
         -X DELETE \
         -H "Accept: application/vnd.github.v3+json" \
-        -H "Authorization: token ${{ github.token }}" https://api.github.com/repos/${{ github.repository }}/issues/${{github.event.number}}/labels/Status%3A%20Merge%20Conflict
+        -H "Authorization: token ${{ github.token }}" \
+        https://api.github.com/repos/${{github.repository}}/issues/${{github.event.number}}/labels/Status%3A%20Merge%20Conflict
     - if: "contains(github.event.pull_request.labels, 'Status: Needs Review')"
       run: |
         curl --silent --fail-with-body \
         -X DELETE \
         -H "Accept: application/vnd.github.v3+json" \
-        -H "Authorization: token ${{ github.token }}" https://api.github.com/repos/${{ github.repository }}/issues/${{github.event.number}}/labels/Status%3A%20Needs%20Review
+        -H "Authorization: token ${{ github.token}}" \
+        https://api.github.com/repos/${{ github.repository }}/issues/${{github.event.number}}/labels/Status%3A%20Needs%20Review
     - if: "contains(github.event.pull_request.labels, 'Status: Awaiting Changes')"
       run: |
         curl --silent --fail-with-body \
         -X DELETE \
         -H "Accept: application/vnd.github.v3+json" \
-        -H "Authorization: token ${{ github.token }}" https://api.github.com/repos/${{ github.repository }}/issues/${{github.event.number}}/labels/Status%3A%20Awaiting%20Changes
+        -H "Authorization: token ${{ github.token}}" \
+        https://api.github.com/repos/${{ github.repository }}/issues/${{github.event.number}}/labels/Status%3A%20Awaiting%20Changes
+
         
