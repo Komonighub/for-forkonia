@@ -8,28 +8,28 @@ jobs:
     if: ${{ (github.repository == 'Komonighub/for-forkonia') }}
     runs-on: ubuntu-latest
     steps:
-    - if: "${{ contains(github.event.pull_request.labels,'Status: Untriaged') }}"
+    - if: ${{contains(github.event.pull_request.labels.*.name, format('Status{0} Untriaged', ':'))}}
       run: |
         curl --silent --fail-with-body \
         -X DELETE \
         -H "Accept: application/vnd.github.v3+json" \
         -H "Authorization: token ${{ github.token }}" \
-        echo "https://api.github.com/repos/${{github.repository}}/issues/${{github.event.number}}/labels/Status%3A%20Untriaged"
-    - if: "${{ contains(github.event.pull_request.labels,'Status: Merge Conflict') }}"
+        https://api.github.com/repos/${{github.repository}}/issues/${{github.event.number}}/labels/Status%3A%20Untriaged
+    - if: ${{ contains(github.event.pull_request.labels.*.name, format('Status{0} Merge Conflict', ':'))}}
       run: |
         curl --silent --fail-with-body \
         -X DELETE \
         -H "Accept: application/vnd.github.v3+json" \
         -H "Authorization: token ${{ github.token }}" \
         https://api.github.com/repos/${{github.repository}}/issues/${{github.event.number}}/labels/Status%3A%20Merge%20Conflict
-    - if: "${{ contains(github.event.pull_request.labels,'Status: Needs Review') }}"
+    - if: ${{ contains(github.event.pull_request.labels.*.name, format('Status{0} Needs Review', ':'))}}
       run: |
         curl --silent --fail-with-body \
         -X DELETE \
         -H "Accept: application/vnd.github.v3+json" \
         -H "Authorization: token ${{ github.token}}" \
         https://api.github.com/repos/${{ github.repository }}/issues/${{github.event.number}}/labels/Status%3A%20Needs%20Review
-    - if: "${{ contains(github.event.pull_request.labels,'Status: Awaiting Changes') }}"
+    - if: ${{ contains(github.event.pull_request.labels.*.name, format('Status{0} Awaiting Changes', ':'))}}
       run: |
         curl --silent --fail-with-body \
         -X DELETE \
