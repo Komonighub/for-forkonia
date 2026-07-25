@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+// the j
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputPath>..\bin\Content.IntegrationTests\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
