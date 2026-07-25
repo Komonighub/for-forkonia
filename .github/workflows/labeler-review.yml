@@ -5,7 +5,7 @@ on:
 jobs:
   add_label:
     # Change the repository name after you've made sure the team name is correct for your fork!
-    if: ${{ (github.repository == 'for-forkonia') && (github.event.review.state == 'APPROVED') }}
+    if: ${{ (github.repository == 'Komonighub/for-forkonia') && (github.event.review.state == 'APPROVED') }}
     runs-on: ubuntu-latest
     steps:
     - run: |
